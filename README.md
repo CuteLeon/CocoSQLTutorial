@@ -1,3 +1,12 @@
+# Create a SQLite database file
+cd .\sqlite-tools
+sqlite3 DummyDatabase.db
+.database
+.quit
+
+
+
+
 原理及概念
     三大范式
         1NF: A property is a minimum unit of data, one property maps to one column in database. 
