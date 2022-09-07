@@ -1,4 +1,5 @@
 ﻿using DummyDatabaseTool.Models;
+using static Bogus.DataSets.Name;
 
 namespace DummyDatabaseTool.Generators
 {
