@@ -1,7 +1,6 @@
-﻿using DummyDatabaseTool.Generators;
-using DummyDatabaseTool.Models;
+﻿using DummyDatabaseTool.Models;
 
-namespace DummyDatabaseTool.Fakers
+namespace DummyDatabaseTool.Generators
 {
     internal class ClassRoomGenerator : GeneratorBase<ClassRooms>
     {

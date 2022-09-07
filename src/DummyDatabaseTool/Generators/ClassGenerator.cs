@@ -1,8 +1,6 @@
-﻿using Bogus;
-using DummyDatabaseTool.Generators;
-using DummyDatabaseTool.Models;
+﻿using DummyDatabaseTool.Models;
 
-namespace DummyDatabaseTool.Fakers
+namespace DummyDatabaseTool.Generators
 {
     internal class ClassGenerator : GeneratorBase<Classes>
     {
