@@ -4,7 +4,7 @@
     {
         public int StudentID { get; set; }
 
-        public string CitizenID { get; set; }
+        public bool Gender { get; set; }
 
         public string Name { get; set; }
 

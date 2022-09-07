@@ -11,7 +11,13 @@ namespace DummyDatabaseTool.Fakers
 
         public override IEnumerable<ClassRooms> Generate()
         {
-            return default;
+            return Enumerable.Range(1, 4)
+                .SelectMany(y => Enumerable.Range(1, 5)
+                    .Select(x => new ClassRooms()
+                    {
+                        ClassRoomID = 5 * (y - 1) + x,
+                        Address = $"Floor {y}, Room {x}"
+                    }));
         }
     }
 }

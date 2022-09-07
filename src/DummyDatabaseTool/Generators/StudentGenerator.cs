@@ -1,27 +1,23 @@
 ﻿using DummyDatabaseTool.Generators;
 using DummyDatabaseTool.Models;
+using static Bogus.DataSets.Name;
 
 namespace DummyDatabaseTool.Fakers
 {
     internal class StudentGenerator : GeneratorBase<Students>
     {
-        public int StudentID { get; set; }
-
-        public string CitizenID { get; set; }
-
-        public string Name { get; set; }
-
-        public DateTime Birthday { get; set; }
-
-        public string Address { get; set; }
-
-        public int GradeID { get; set; }
-
-        public int ClassID { get; set; }
+        public StudentGenerator()
+        {
+            this.EntityFaker
+                .RuleFor(x => x.Name, faker => faker.Name.FirstName())
+                .RuleFor(x => x.Address, faker => faker.Address.FullAddress())
+                .RuleFor(x => x.Gender, faker => faker.Person.Gender == Gender.Male)
+                .RuleFor(x => x.Birthday, faker => faker.Person.DateOfBirth);
+        }
 
         public override IEnumerable<Students> Generate()
         {
-            return default;
+            return this.EntityFaker.GenerateForever();
         }
     }
 }
