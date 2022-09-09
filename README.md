@@ -8,10 +8,11 @@ sqlite3 DummyDatabase.db
 .database
 .quit
 ```
-
+- 历史
+  - 提高数据组织和管理的能力
 - 原理及概念
   - 三大范式
-    - 1NF: A property is a minimum unit of data, one property maps to one column in database. 
+    - 1 normalized formular (NF): A property is a minimum unit of data, one property maps to one column in database. 
     - 2NF: Each non-primary property must totaly depends on the primary property collection.
     - 3NF: Based on the 2NF, non-primary properties don't transfer the dependency of primary properties.
   - 非规范化可能出现的问题
@@ -23,9 +24,9 @@ sqlite3 DummyDatabase.db
     - 索引失效
   - 外键
 - 数据库对象
-  - 表
-  - 视图
-  - 存储过程
+  - 表 table
+  - 视图 view
+  - 存储过程 store procedure
 - SQL查询
   - 单表查询
     - 查询条件
