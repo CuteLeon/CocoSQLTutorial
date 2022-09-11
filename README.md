@@ -74,6 +74,7 @@ sqlite3 DummyDatabase.db
   - Convert()
   - DateDiff()
   - Concat()
+  - ROUND()
 - SQL写入*
   - Update
   - Insert
