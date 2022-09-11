@@ -41,8 +41,39 @@ FROM Classes c
 INNER JOIN Exams e ON c.GradeID =e.GradeID AND c.ClassID =e.ClassID 
 INNER JOIN Subjects s ON s.SubjectID = e.SubjectID AND s.SubjectName = '科学';
 
--- 4.嵌套查询 TBD
+-- Day2
+-- 4. 1 单维度Group by
+SELECT Gender, COUNT(1)
+FROM Students s 
+GROUP BY s.Gender;
 
+-- 4.2 多维度分组求count
+SELECT s.Gender, s.GradeID, s.ClassID, COUNT(1)
+FROM Students s 
+GROUP BY s.Gender, s.GradeID, s.ClassID;
 
+--4.3 只输出满足上述条件，且count的结果>10的信息--> 对于set的filter用having
+SELECT s.Gender, s.GradeID, s.ClassID, COUNT(1)
+FROM Students s 
+GROUP BY s.Gender, s.GradeID, s.ClassID
+HAVING COUNT(1) > 10;
+
+--4.4 输出每个班级所有考试的最高分和最低分是几分？不用知道学生是谁
+SELECT e.GradeID, e.ClassID, ROUND(MAX(s.Score)/10, 2), ROUND(MIN，(s.Score), 4)
+FROM Exams e
+LEFT JOIN Scores s ON e.ExamID =s.ExamID 
+GROUP BY e.GradeID, e.ClassID;
+
+-- 5.嵌套查询 
+-- 5.1 学生所在班级的最高分和最低分，需要知道学生的名字
+
+SELECT s3.GradeID, s3.ClassID, s3.Name, t.MaxScore, t.MinScore
+FROM Students s3 
+LEFT JOIN (
+	SELECT s.ClassID, s.GradeID, MAX(s2.Score) AS MaxScore, MIN(s2.Score) AS MinScore
+	FROM Students s 
+	LEFT JOIN Scores s2 ON s.StudentID = s2.StudentID 
+	GROUP BY s.ClassID, s.GradeID) t
+	ON s3.GradeID =t.GradeID AND s3.ClassID =t.ClassID;
 
 
