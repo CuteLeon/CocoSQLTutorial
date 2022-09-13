@@ -7,23 +7,23 @@
 -- 1.单表查询
 SELECT * FROM Students;
 SELECT StudentID, Name FROM Students;
-SELECT * FROM Students s where Birthday between '2000-01-01' and '2005-12-31';
-SELECT * FROM Students s where GradeID IN (1, 3);
-SELECT * FROM Students s where (GradeID=1 AND ClassID=2) OR (GradeID=2 AND ClassID=3) OR (GradeID=3 AND ClassID=1);
+SELECT * FROM Students s WHERE Birthday between '2000-01-01' AND '2005-12-31';
+SELECT * FROM Students s WHERE GradeID IN (1, 3);
+SELECT * FROM Students s WHERE (GradeID=1 AND ClassID=2) OR (GradeID=2 AND ClassID=3) OR (GradeID=3 AND ClassID=1);
 
 -- 2.模糊查询
--- % : 0 or multiple characters;
+-- % : 0 OR multiple characters;
 -- _ : 1 character;
-SELECT * FROM Students s where Name LIKE '%C%';
-SELECT * FROM Students s where Name LIKE 'T%';
-SELECT * FROM Students s where Name LIKE '_o%';
-SELECT * FROM Students s where Name LIKE '%\\\%%';--\代表转义，每次转义一个字符
+SELECT * FROM Students s WHERE Name LIKE '%C%';
+SELECT * FROM Students s WHERE Name LIKE 'T%';
+SELECT * FROM Students s WHERE Name LIKE '_o%';
+SELECT * FROM Students s WHERE Name LIKE '%\\\%%';--\代表转义，每次转义一个字符
 
 -- 3.多表联合查询
 -- 3.1 展示班级信息和所有学生信息
 SELECT *
 FROM Classes c
-LEFT JOIN Students s ON s.GradeID =c.GradeID and s.ClassID =c.ClassID;
+LEFT JOIN Students s ON s.GradeID =c.GradeID AND s.ClassID =c.ClassID;
 -- 3.2 展示所有班级的考试记录
 SELECT *
 FROM Classes c
@@ -42,7 +42,7 @@ INNER JOIN Exams e ON c.GradeID =e.GradeID AND c.ClassID =e.ClassID
 INNER JOIN Subjects s ON s.SubjectID = e.SubjectID AND s.SubjectName = '科学';
 
 -- Day2
--- 4. 1 单维度Group by
+-- 4. 1 单维度Group BY
 SELECT Gender, COUNT(1)
 FROM Students s 
 GROUP BY s.Gender;
@@ -70,10 +70,8 @@ GROUP BY e.GradeID, e.ClassID;
 SELECT s3.GradeID, s3.ClassID, s3.Name, t.MaxScore, t.MinScore
 FROM Students s3 
 LEFT JOIN (
-	SELECT s.ClassID, s.GradeID, MAX(s2.Score) AS MaxScore, MIN(s2.Score) AS MinScore
+	SELECT s.ClassID, s.GradeID, MAX(s2.Score) AS MAXScore, MIN(s2.Score) AS MINScore
 	FROM Students s 
 	LEFT JOIN Scores s2 ON s.StudentID = s2.StudentID 
 	GROUP BY s.ClassID, s.GradeID) t
 	ON s3.GradeID =t.GradeID AND s3.ClassID =t.ClassID;
-
-
