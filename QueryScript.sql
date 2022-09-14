@@ -75,3 +75,10 @@ LEFT JOIN (
 	LEFT JOIN Scores s2 ON s.StudentID = s2.StudentID 
 	GROUP BY s.ClassID, s.GradeID) t
 	ON s3.GradeID =t.GradeID AND s3.ClassID =t.ClassID;
+
+-- 一年级一班男生数学平均分数和一年级三班数学平均分数
+-- 每个班级举行的第一场考试是什么科目
+-- 每个班级第一场考试的前五名学生的名字和分数
+-- 每一场考试第1-10名和第11-20名的平均分数
+-- 没有举办过科学科目考试的班级
+-- 举办过任一科目超过一次的班级（不需要重复的记录）
