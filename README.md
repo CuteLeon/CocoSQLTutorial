@@ -44,7 +44,6 @@ sqlite3 DummyDatabase.db
       - 索引
     - [Outer|Cross] Apply
     - [Not] Exists
-    - Distinct
   - 多表联合查询
     - Left Join {} On {}
       - Left Join excluding Inner Join
