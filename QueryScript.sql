@@ -9,7 +9,7 @@ SELECT * FROM Students;
 SELECT StudentID, Name FROM Students;
 SELECT * FROM Students s WHERE Birthday between '2000-01-01' AND '2005-12-31';
 SELECT * FROM Students s WHERE GradeID IN (1, 3);
-SELECT * FROM Students s WHERE (GradeID=1 AND ClassID=2) OR (GradeID=2 AND ClassID=3) OR (GradeID=3 AND ClassID=1);
+SELECT * FROM Students s WHERE (GradeID = 1 AND ClassID = 2) OR (GradeID = 2 AND ClassID = 3) OR (GradeID = 3 AND ClassID = 1);
 
 -- 2.模糊查询
 -- % : 0 OR multiple characters;
@@ -23,11 +23,11 @@ SELECT * FROM Students s WHERE Name LIKE '%\\\%%';--\代表转义，每次转义
 -- 3.1 展示班级信息和所有学生信息
 SELECT *
 FROM Classes c
-LEFT JOIN Students s ON s.GradeID =c.GradeID AND s.ClassID =c.ClassID;
+LEFT JOIN Students s ON s.GradeID = c.GradeID AND s.ClassID = c.ClassID;
 -- 3.2 展示所有班级的考试记录
 SELECT *
 FROM Classes c
-LEFT JOIN Exams e ON c.GradeID =e.GradeID AND c.ClassID =e.ClassID 
+LEFT JOIN Exams e ON c.GradeID = e.GradeID AND c.ClassID = e.ClassID 
 LEFT JOIN Subjects s ON s.SubjectID = e.SubjectID;
 -- 3.3 输出所有考过科学科目的班级-方法2
 SELECT *
@@ -38,7 +38,7 @@ WHERE s.SubjectName = '科学';
 --3.3 输出所有考过科学科目的班级-方法2
 SELECT *
 FROM Classes c
-INNER JOIN Exams e ON c.GradeID =e.GradeID AND c.ClassID =e.ClassID 
+INNER JOIN Exams e ON c.GradeID = e.GradeID AND c.ClassID = e.ClassID 
 INNER JOIN Subjects s ON s.SubjectID = e.SubjectID AND s.SubjectName = '科学';
 
 -- Day2
@@ -61,7 +61,7 @@ HAVING COUNT(1) > 10;
 --4.4 输出每个班级所有考试的最高分和最低分是几分？不用知道学生是谁
 SELECT e.GradeID, e.ClassID, ROUND(MAX(s.Score)/10, 2), ROUND(MIN，(s.Score), 4)
 FROM Exams e
-LEFT JOIN Scores s ON e.ExamID =s.ExamID 
+LEFT JOIN Scores s ON e.ExamID = s.ExamID 
 GROUP BY e.GradeID, e.ClassID;
 
 -- 5.嵌套查询 
@@ -74,7 +74,7 @@ LEFT JOIN (
 	FROM Students s 
 	LEFT JOIN Scores s2 ON s.StudentID = s2.StudentID 
 	GROUP BY s.ClassID, s.GradeID) t
-	ON s3.GradeID =t.GradeID AND s3.ClassID =t.ClassID;
+	ON s3.GradeID = t.GradeID AND s3.ClassID = t.ClassID;
 
 -- 一年级一班男生数学平均分数和一年级三班数学平均分数
 -- 每个班级举行的第一场考试是什么科目
