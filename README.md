@@ -44,6 +44,7 @@ sqlite3 DummyDatabase.db
       - 索引
     - [Outer|Cross] Apply
     - [Not] Exists
+    - Distinct
   - 多表联合查询
     - Left Join {} On {}
       - Left Join excluding Inner Join
@@ -67,7 +68,7 @@ sqlite3 DummyDatabase.db
     - Sum()
     - AVG()
 - 数据排序与截取
-  - (Top|Limit) {}Order By [Asc|Desc]
+  - Limit {} OffSet {} Order By [Asc|Desc]
   - Row_Number() Over(Partition By {} Order By {} [ASC|DESC])
 - SQL函数
   - GetDate()
@@ -83,6 +84,10 @@ sqlite3 DummyDatabase.db
   - Truncate
 - 高级*
   - 事务
+    - BEGIN TRANSACTION;
+    - COMMIT;
+    - ROLLBACK;
+    - END TRANSACTION;
   - 隔离级别
     - 一致性问题
   - 锁
